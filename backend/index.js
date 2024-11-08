@@ -30,12 +30,24 @@ const app=express();
 const salt=bcrypt.genSaltSync(10);
 const secret='u34kuu4r8i3ryujfdhyuki28tgfhj';
 
-app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-      ? 'https://blog-rouge-gamma-58.vercel.app' 
-      : 'http://localhost:5174',
-    credentials: true
-  }));
+// app.use(cors({
+//     origin: process.env.NODE_ENV === 'production' 
+//       ? 'https://blog-rouge-gamma-58.vercel.app' 
+//       : 'http://localhost:5174',
+//     credentials: true
+//   }));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production' 
+    ? 'https://blog-rouge-gamma-58.vercel.app' 
+    : 'http://localhost:5174');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+
 // app.use(cors({credentials:true,origin:'http://localhost:5173'}));
 app.use(express.json());
 app.use(cookieParser());
