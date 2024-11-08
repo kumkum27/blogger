@@ -32,7 +32,7 @@ const secret='u34kuu4r8i3ryujfdhyuki28tgfhj';
 
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-      ? 'https://your-frontend-url.vercel.app' 
+      ? 'blogger-lime-eta.vercel.app' 
       : 'http://localhost:5174',
     credentials: true
   }));
