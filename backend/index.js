@@ -37,15 +37,12 @@ const secret='u34kuu4r8i3ryujfdhyuki28tgfhj';
 //     credentials: true
 //   }));
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production' 
-    ? 'https://blog-rouge-gamma-58.vercel.app' 
-    : 'http://localhost:5174');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+app.use(cors({
+  origin: ['https://blog-rouge-gamma-58.vercel.app', 'http://localhost:5174'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+}));
 
 
 // app.use(cors({credentials:true,origin:'http://localhost:5173'}));
