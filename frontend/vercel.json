@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "blog-ten-gamma-78.vercel.app/api/:path*" }
+    { "source": "/api/(.*)", "destination": "/api" }
   ]
 }
