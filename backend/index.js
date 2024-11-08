@@ -15,7 +15,6 @@ import Comment from "./api/models/comment.js";
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { useParams } from "react-router-dom";
 const port = process.env.PORT || 4000;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,42 +29,12 @@ const app=express();
 const salt=bcrypt.genSaltSync(10);
 const secret='u34kuu4r8i3ryujfdhyuki28tgfhj';
 
-// app.use(cors({
-//     origin: process.env.NODE_ENV === 'production' 
-//       ? 'https://blog-rouge-gamma-58.vercel.app' 
-//       : 'http://localhost:5174',
-//     credentials: true
-//   }));
-
-// app.use(cors({
-//   origin: ['https://blog-rouge-gamma-58.vercel.app', 'http://localhost:5174'],
-//   credentials: true,
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
-// }));
-
-
-
 app.use(cors({
-  origin: ['https://blog-rouge-gamma-58.vercel.app', 'http://localhost:5174'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Cookie'],
-  exposedHeaders: ['set-cookie']
-}));
-
-
-app.use(express.json());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-
-
-
-
-
-
+    origin: process.env.NODE_ENV === 'production' 
+      ? 'https://blog-rouge-gamma-58.vercel.app/' 
+      : 'http://localhost:5174',
+    credentials: true
+  }));
 // app.use(cors({credentials:true,origin:'http://localhost:5173'}));
 app.use(express.json());
 app.use(cookieParser());
