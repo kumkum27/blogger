@@ -37,12 +37,33 @@ const secret='u34kuu4r8i3ryujfdhyuki28tgfhj';
 //     credentials: true
 //   }));
 
+// app.use(cors({
+//   origin: ['https://blog-rouge-gamma-58.vercel.app', 'http://localhost:5174'],
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+// }));
+
+
+
 app.use(cors({
   origin: ['https://blog-rouge-gamma-58.vercel.app', 'http://localhost:5174'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Cookie'],
+  exposedHeaders: ['set-cookie']
 }));
+
+
+app.use(express.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+
+
+
 
 
 // app.use(cors({credentials:true,origin:'http://localhost:5173'}));
