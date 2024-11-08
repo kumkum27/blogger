@@ -15,7 +15,6 @@ import Comment from "./api/models/comment.js";
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { useParams } from "react-router-dom";
 const port = process.env.PORT || 4000;
 
 const __filename = fileURLToPath(import.meta.url);
